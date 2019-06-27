@@ -1,7 +1,17 @@
 html
   head
-    title hello
-  body
-    each note in notes
-      h1= note
-    h1 test
+    title Memo App MongoDB
+    link(rel="stylesheet", href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css", integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T", crossorigin="anonymous")
+    style
+      include style.css
+  body.bg-light
+    .container.cont-table
+      h3 Memo App MongoDB
+      table.table.table-hover.table-dark
+        tr
+          th.col-md-1 name
+          th.col email
+        each note in notes
+          tr
+            td= note.name
+            td= note.email
