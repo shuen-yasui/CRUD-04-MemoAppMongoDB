@@ -50,3 +50,9 @@ app.post('/add', (req, res) => {
   memo.save()
   res.redirect('/');
 });
+
+app.get('/edit/:id', (req, res) => {
+  res.render('edit', {
+
+  });
+});

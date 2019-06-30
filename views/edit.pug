@@ -1,0 +1,13 @@
+extends layout
+
+block content
+  h3 Edit Note
+  hr
+  form(method='POST', action='/note/edit/')
+    #form-group
+      label Title:
+      input.form-control(name='title', type='text', value='')
+    #form-group
+      label Body:
+      input.form-control(name='body', type='text', value='')
+    input.btn.btn-primary.mt-3(type='submit',value='Submit')
