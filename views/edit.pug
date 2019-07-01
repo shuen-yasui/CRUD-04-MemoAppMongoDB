@@ -3,11 +3,11 @@ extends layout
 block content
   h3 Edit Note
   hr
-  form(method='POST', action='/note/edit/')
+  form(method='POST', action='/edit/'+memo.id)
     #form-group
-      label Title:
-      input.form-control(name='title', type='text', value='')
+      label Author:
+      input.form-control(name='author', type='text', value=memo.author)
     #form-group
-      label Body:
-      input.form-control(name='body', type='text', value='')
+      label Memo:
+      input.form-control(name='memo', type='text', value=memo.memo)
     input.btn.btn-primary.mt-3(type='submit',value='Submit')

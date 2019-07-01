@@ -10,6 +10,8 @@ block content
           tr
             td= memo.author
             td= memo.memo
+            td
+              a(href='/edit/'+memo.id).btn.btn-secondary.btn-sm EDIT
       h3 Add New Entry
         form(method='POST', action='/add')
           #form-group

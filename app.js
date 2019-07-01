@@ -52,7 +52,23 @@ app.post('/add', (req, res) => {
 });
 
 app.get('/edit/:id', (req, res) => {
-  res.render('edit', {
+  Memo.findById(req.params.id, (err, memo) => {
+    res.render('edit', {
+      memo:memo
+    });
+  });
+});
 
+app.post('/edit/:id', (req, res) => {
+  let newMemo = {};
+  newMemo.author = req.body.author;
+  newMemo.memo = req.body.memo;
+  let query = {_id:req.params.id};
+  Memo.updateOne(query, newMemo, (err) => {
+    if(err){
+      console.log(err);
+    } else {
+      res.redirect('/');
+    }
   });
 });
