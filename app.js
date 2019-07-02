@@ -19,6 +19,7 @@ const Memo = mongoose.model('Memos', memoSchema);
 
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'pug');
+app.use(express.static(__dirname + '/views'));
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json())
 dotenv.config();
@@ -69,6 +70,17 @@ app.post('/edit/:id', (req, res) => {
       console.log(err);
     } else {
       res.redirect('/');
+    }
+  });
+});
+
+app.delete('/delete/:id', (req, res) => {
+  let query = {_id:req.params.id};
+  Memo.remove(query, (err) => {
+    if(err){
+      console.log(err);
+    } else {
+      res.send();
     }
   });
 });

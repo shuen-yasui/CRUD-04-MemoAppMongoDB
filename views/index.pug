@@ -1,24 +1,26 @@
 extends layout
 
 block content
-      h3 Memo App MongoDB
-      table.table.table-hover.table-dark
-        tr
-          th.col-md-1 author
-          th.col memo
-        each memo in memos
-          tr
-            td= memo.author
-            td= memo.memo
-            td
-              a(href='/edit/'+memo.id).btn.btn-secondary.btn-sm EDIT
-      h3 Add New Entry
-        form(method='POST', action='/add')
-          #form-group
-            h6 Author:
-            input.form-control(name='author', type='text')
-          #form-group
-            h6 Memo:
-            input.form-control(name='memo', type='text')
-          br
-          input.btn.btn-dark(type='submit',value='Submit')
+  h3 Memo App MongoDB
+  table.table.table-hover.table-dark
+    tr
+      th.col-md-1 author
+      th.col memo
+    each memo in memos
+      tr
+        td= memo.author
+        td= memo.memo
+        td
+          a(href='/edit/'+memo.id).btn.btn-secondary.btn-sm EDIT
+        td
+          a(href='#', data-id=memo.id).btn.btn-secondary.btn-sm.delete-memo DELETE
+  h3 Add New Entry
+    form(method='POST', action='/add')
+      #form-group
+        h6 Author:
+        input.form-control(name='author', type='text')
+      #form-group
+        h6 Memo:
+        input.form-control(name='memo', type='text')
+      br
+      input.btn.btn-dark(type='submit',value='Submit')
