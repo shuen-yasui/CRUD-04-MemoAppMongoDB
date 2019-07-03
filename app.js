@@ -24,6 +24,7 @@ app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json())
 dotenv.config();
 
+// Connection to DB
 mongoose.connect(process.env.DATABASE, {useNewUrlParser:true});
 mongoose.Promise = global.Promise;
 mongoose.connection
@@ -38,6 +39,7 @@ app.listen(port, () => {
   console.log("Server listening on port " + port);
 });
 
+// Routes
 app.get('/', (req, res) => {
   Memo.find()
     .then((memos) => {
@@ -76,7 +78,7 @@ app.post('/edit/:id', (req, res) => {
 
 app.delete('/delete/:id', (req, res) => {
   let query = {_id:req.params.id};
-  Memo.remove(query, (err) => {
+  Memo.deleteOne(query, (err) => {
     if(err){
       console.log(err);
     } else {

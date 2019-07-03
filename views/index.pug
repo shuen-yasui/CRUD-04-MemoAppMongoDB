@@ -1,11 +1,15 @@
 extends layout
 
 block content
-  h3 Memo App MongoDB
+  h3 Memo App
+  hr
+  p This webapp demonstrates CRUD functions with a MongoDB database by utilizing RESTful methods. The app is built using node and express framework. The table below displays entries stored in the DB. Each entry can be edited or deleted by clicking on the appropriate button. New entries can be added by populating the form found at the bottom of the page.
   table.table.table-hover.table-dark
     tr
-      th.col-md-1 author
-      th.col memo
+      th.col-md-1 Author
+      th.col Memo
+      th
+      th
     each memo in memos
       tr
         td= memo.author
@@ -14,13 +18,14 @@ block content
           a(href='/edit/'+memo.id).btn.btn-secondary.btn-sm EDIT
         td
           a(href='#', data-id=memo.id).btn.btn-secondary.btn-sm.delete-memo DELETE
-  h3 Add New Entry
-    form(method='POST', action='/add')
-      #form-group
-        h6 Author:
-        input.form-control(name='author', type='text')
-      #form-group
-        h6 Memo:
-        input.form-control(name='memo', type='text')
-      br
-      input.btn.btn-dark(type='submit',value='Submit')
+  h3.mt-3.mb-3 Add New Entry
+  hr
+  form(method='POST', action='/add')
+    #form-group
+      h6 Author:
+      input.form-control(name='author', type='text')
+    #form-group
+      h6 Memo:
+      input.form-control(name='memo', type='text')
+    br
+    input.btn.btn-dark(type='submit',value='Submit')
